@@ -1,0 +1,35 @@
+[
+    {
+        "firstName" : "Nicolas",
+        "lastName" : "DAUNAC",
+        "age" : 22,
+        "email" : "ndaunac@gmail.com",
+        "activity" : "student",
+        "phoneNumber" : "0688888888"
+    },
+    {
+        "firstName" : "marouane",
+        "lastName" : "MARHRANI",
+        "age" : 21,
+        "email" : "marouane@gmail.com",
+        "activity" : "student",
+        "phoneNumber" : "0688888888"
+    },
+    {
+        "firstName" : "Mehdi",
+        "lastName" : "EL MZADY",
+        "age" : 21,
+        "email" : "medhi@gmail.com",
+        "activity" : "student",
+        "phoneNumber" : "0688888888"
+    },
+    {
+        "firstName" : "Lelia",
+        "lastName" : "KOZAN",
+        "age" : 21,
+        "email" : "Lelia@gmail.com",
+        "activity" : "student",
+        "phoneNumber" : "0688888888"
+    }
+    
+]

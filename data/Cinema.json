@@ -1,0 +1,20 @@
+[
+    {
+        "name" : "Cinema CGR Toulouse",
+        "location" : "115 rue de la phique",
+        "amenities" : ["Dolby", "3D"],
+        "coordinates": {
+            "lat" : 2.87564,
+            "lng": 1.646464
+        }
+    },
+    {
+        "name" : "Cinema Pathé Toulouse",
+        "location" : "12 Avenue du colonelle",
+        "amenities" : ["3D"],
+        "coordinates": {
+            "lat" : 3.87564,
+            "lng": 2.546464
+        }
+    }
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "name" : "Marathon Avatar",
+        "description" : "projection des 2 films Avatar à la suite.",
+        "date" : "05-05-2023",
+        "cinema" : "666d9947c812abef0ed55f71",
+        "movie": "666d9758c812abef0ed55f6b",
+        "amenities" : ["pop corn"],
+        "images" : [""]
+    },
+
+    {
+        "name" : "Marathon Harry potter",
+        "description" : "projection des 2 films Harry potter à la suite.",
+        "date" : "05-05-2023",
+        "cinema" : "666d9947c812abef0ed55f71",
+        "movie": "666d9758c812abef0ed55f6d",
+        "amenities" : ["pop corn"],
+        "images" : [""]
+    },
+    {
+        "name" : "Discusion Film indépendant",
+        "description" : "Disution autour de popcorn sur les derniers film indépendant.",
+        "date" : "02-05-2023",
+        "cinema" : "666d9947c812abef0ed55f71",
+        "movie": "",
+        "amenities" : ["pop corn"],
+        "images" : [""]
+    }
+]

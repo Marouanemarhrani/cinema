@@ -3,18 +3,24 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
 const socket = require("socket.io");
+const bodyParser = require('body-parser');
 
 // Import routes
 const userRoutes = require('./routes/userRoutes.js');
 const cinemaRoutes = require('./routes/cinemaRoutes.js');
 const movieRoutes = require('./routes/movieRoutes.js');
 const reservationRoutes = require('./routes/reservationRoutes.js');
-const eventRoutes = require('./routes/eventRoutes.js')
+const eventRoutes = require('./routes/eventRoutes.js');
+const { create } = require("./models/userModel.js");
+const { createUser } = require("./controllers/userController.js");
+const User = require("./models/userModel.js");
 
 require("dotenv").config();
 
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 // Use routes
 app.use('/api/users', userRoutes);
@@ -61,3 +67,6 @@ io.on("connection", (socket) => {
     }
   });
 });
+
+
+app.post("/api/user" , createUser)

@@ -1,4 +1,5 @@
 const User = require('../models/userModel.js');
+const bodyParser = require('body-parser');
 
 exports.createUser = async (req, res) => {
   try {

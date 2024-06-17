@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Assurez-vous d'avoir react-router-dom installé pour gérer les routes
-import './Home.css'; // Import du fichier CSS pour appliquer les styles
+import { Link } from 'react-router-dom'; 
+import './Home.css'; 
 
 const Home = () => {
   return (
@@ -16,7 +16,7 @@ const Home = () => {
         </nav>
         <div className="branding">
           <h1>Projet Cinéma</h1>
-          <p>Avec la popularité croissante des services de streaming...</p>
+          <p>La plateforme qui vous fait gagner du temps</p>
         </div>
       </header>
 
@@ -36,9 +36,6 @@ const Home = () => {
           <Link to="/signup" className="button">S'inscrire</Link>
           <Link to="/login" className="button">Se connecter</Link>
         </div>
-        <form className="search-form">
-          {/* Formulaire de recherche de séances */}
-        </form>
       </section>
 
       <section className="promotion">

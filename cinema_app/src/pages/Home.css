@@ -187,4 +187,172 @@ body, html {
   }
   
 
+  .home {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  header {
+    padding: 20px 0; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  nav ul li {
+    font-size: 18px;
+  }
+  
+  .branding {
+    text-align: center;
+    margin-bottom: 30px; 
+  }
+  
+  .branding h1 {
+    font-size: 32px;
+    margin-bottom: 5px;
+  }
+  
+  .branding p {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .cta {
+    text-align: center;
+    margin: 40px 0;
+  }
+  
+  .cta h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .promotion {
+    margin-bottom: 40px;
+  }
+  
+  .promotion h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .special-offers {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .special-offers h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .special-offers ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .special-offers li {
+    margin-bottom: 10px;
+  }
+  
+  .introduction,
+  .features {
+    margin-bottom: 40px;
+  }
+  
+  .introduction h2,
+  .features h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .introduction p,
+  .features p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  footer {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  .footer-links {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .footer-links li {
+    font-size: 14px;
+  }
+  
+  .social-icons {
+    margin-top: 20px;
+  }
+  
+  /* Responsive Adjustments */
+  @media screen and (max-width: 768px) {
+    .cta-buttons {
+      flex-direction: column;
+    }
+  
+    .button {
+      width: 100%;
+    }
+  
+    .promotion {
+      margin-bottom: 20px;
+    }
+  
+    .special-offers {
+      padding: 15px;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .movie-slide {
+      padding: 5px;
+    }
+  
+    .movie-slide p {
+      font-size: 16px;
+    }
+  
+    .special-offers {
+      padding: 10px;
+    }
+  }
   

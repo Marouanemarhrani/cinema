@@ -15,11 +15,13 @@ const SearchSessionsPage = () => {
     const dummyResults = [
       {
         id: 1,
-        movieTitle: 'Movie 1',
+        movieTitle: 'The Fall Guy',
         date: '2024-06-18',
         location: 'New York',
         vostfr: ['VOSTFR'],
         equipment: ['Dolby Atmos', 'Sièges inclinables'],
+        cinema: 'Cinema A',
+        image: 'https://fr.web.img6.acsta.net/c_310_420/o_club-allocine-2024-310x420.png_0_se/pictures/24/03/22/08/41/0670281.jpg',
       },
       {
         id: 2,
@@ -27,6 +29,8 @@ const SearchSessionsPage = () => {
         date: '2024-06-19',
         location: 'Los Angeles',
         equipment: ['IMAX', '3D'],
+        cinema: 'Cinema B',
+        image: 'https://fr.web.img4.acsta.net/c_310_420/img/bd/b1/bdb11f06bd2f0392cfc2bf9f64ecca1d.jpg',
       },
     ];
 
@@ -51,20 +55,20 @@ const SearchSessionsPage = () => {
   return (
     <div className="search-sessions-page">
       <div className="home">
-      <header>
-        <nav>
-          <ul>
-            <li><Link to="/">Accueil</Link></li>
-            <li><Link to="/search">Recherche de Séances</Link></li>
-            <li><Link to="/reservations">Mes Réservations</Link></li>
-            <li><Link to="/statistics">Statistiques</Link></li>
-          </ul>
-        </nav>
-        <div className="branding">
-          <h1>Projet Cinéma</h1>
-          <p>La plateforme qui vous fait gagner du temps</p>
-        </div>
-      </header>
+        <header>
+          <nav>
+            <ul>
+              <li><Link to="/">Accueil</Link></li>
+              <li><Link to="/search">Recherche de Séances</Link></li>
+              <li><Link to="/reservations">Mes Réservations</Link></li>
+              <li><Link to="/statistics">Statistiques</Link></li>
+            </ul>
+          </nav>
+          <div className="branding">
+            <h1>Projet Cinéma</h1>
+            <p>La plateforme qui vous fait gagner du temps</p>
+          </div>
+        </header>
       </div>
 
       <div className="search-form-container">
@@ -74,15 +78,18 @@ const SearchSessionsPage = () => {
 
       <div className="results">
         {searchResults.length > 0 ? (
-          searchResults.map((session) => (
-            <div key={session.id} className="session-item" onClick={() => openPopUp(session)}>
-              <h3>{session.movieTitle}</h3>
-              <p>Date: {session.date}</p>
-              <p>Lieu: {session.location}</p>
-              <p>Langues: {session.vostfr ? session.vostfr.join(', ') : 'Non spécifié'}</p>
-              <p>Équipements: {session.equipment.join(', ')}</p>
-            </div>
-          ))
+          <div className="movie-gallery">
+            {searchResults.map((session) => (
+              <div key={session.id} className="movie-item" onClick={() => openPopUp(session)}>
+                <img src={session.image} alt={session.movieTitle} />
+                <div className="movie-details">
+                  <h3>{session.movieTitle}</h3>
+                  <p>Lieu: {session.location}</p>
+                  <p>Cinéma: {session.cinema}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         ) : (
           <p>Aucun résultat trouvé</p>
         )}

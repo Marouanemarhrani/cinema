@@ -1,40 +1,53 @@
-import React from 'react';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-
+// Home.js
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import './Home.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import MovieDetailsPopup from '../components/MovieDetailsPopup'; // Assurez-vous que le chemin est correct
+import PopUpDetails from '../components/PopUpDetails';
 
 const Home = () => {
-  // Données de démonstration pour les films et les offres spéciales
   const latestMovies = [
     {
       id: 1,
       title: 'Dune',
       image: 'https://fr.web.img5.acsta.net/c_310_420/pictures/21/08/10/12/20/4633954.jpg',
+      description: 'Dans un futur lointain...',
+      genre: 'Science-fiction',
+      age: '12+',
     },
     {
       id: 2,
       title: 'Mad Max Furiosa',
       image: 'https://fr.web.img4.acsta.net/c_310_420/img/bd/b1/bdb11f06bd2f0392cfc2bf9f64ecca1d.jpg',
+      description: 'Dans un monde post-apocalyptique...',
+      genre: 'Action',
+      age: '16+',
     },
     {
       id: 3,
       title: 'The Fall Guy',
       image: 'https://fr.web.img6.acsta.net/c_310_420/o_club-allocine-2024-310x420.png_0_se/pictures/24/03/22/08/41/0670281.jpg',
+      description: 'Un thriller palpitant...',
+      genre: 'Thriller',
+      age: '16+',
     },
     {
       id: 4,
       title: 'Vice-Versa 2',
       image: 'https://fr.web.img5.acsta.net/c_310_420/img/f5/4c/f54c3310f101fe8ae4bba9e566bca1b5.jpg',
+      description: 'La suite des aventures émotionnelles...',
+      genre: 'Animation',
+      age: '6+',
     },
   ];
 
   const specialOffers = [
     {
       id: 1,
-      title: 'Offre Cinema Gaumont',
+      title: 'Offre 1, Cinema Gaumont',
       description: 'Réduction spéciale sur les billets IMAX',
     },
     {
@@ -44,7 +57,9 @@ const Home = () => {
     },
   ];
 
-  // Configuration du carrousel
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [showMovieDetails, setShowMovieDetails] = useState(false);
+
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -69,6 +84,15 @@ const Home = () => {
     ],
   };
 
+  const openMovieDetails = (movie) => {
+    setSelectedMovie(movie);
+    setShowMovieDetails(true);
+  };
+
+  const closeMovieDetails = () => {
+    setShowMovieDetails(false);
+  };
+
   return (
     <div className="home">
       <header>
@@ -85,20 +109,33 @@ const Home = () => {
           <p>La plateforme qui vous fait gagner du temps</p>
         </div>
       </header>
+
+      <section className="cta">
+        <h2>Commencez dès maintenant</h2>
+        <div className="cta-buttons">
+          <Link to="/signup" className="button">S'inscrire</Link>
+          <Link to="/login" className="button">Se connecter</Link>
+        </div>
+      </section>
+      
       <section className="promotion">
         <h2>Derniers Films</h2>
         <Slider {...sliderSettings}>
-          {latestMovies.map(movie => (
-            <div key={movie.id} className="movie-slide">
+          {latestMovies.map((movie) => (
+            <div key={movie.id} className="movie-slide" onClick={() => openMovieDetails(movie)}>
               <img src={movie.image} alt={movie.title} />
               <p>{movie.title}</p>
             </div>
           ))}
         </Slider>
+        <h1></h1>
+        {showMovieDetails && selectedMovie && (
+        <MovieDetailsPopup movie={selectedMovie} onClose={closeMovieDetails} />
+      )}
         <div className="special-offers">
           <h3>Offres Spéciales</h3>
           <ul>
-            {specialOffers.map(offer => (
+            {specialOffers.map((offer) => (
               <li key={offer.id}>
                 <strong>{offer.title}</strong>
                 <p>{offer.description}</p>
@@ -118,13 +155,7 @@ const Home = () => {
         <p>Nous offrons une technologie avancée comme le son Dolby, des sièges inclinables, et bien plus encore pour une expérience immersive.</p>
       </section>
 
-      <section className="cta">
-        <h2>Commencez dès maintenant</h2>
-        <div className="cta-buttons">
-          <Link to="/signup" className="button">S'inscrire</Link>
-          <Link to="/login" className="button">Se connecter</Link>
-        </div>
-      </section>
+      
 
       <footer>
         <ul className="footer-links">

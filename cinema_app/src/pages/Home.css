@@ -1,0 +1,188 @@
+/* Home.css */
+
+/* Reset des marges et paddings */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Style global du conteneur principal */
+  .home {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Style du header */
+  .home header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .home header .branding h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: #333;
+  }
+  
+  .home header nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .home header nav ul li {
+    font-size: 1.2rem;
+  }
+  
+  .home header nav ul li a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+  }
+  
+  .home header nav ul li a:hover {
+    color: #007bff;
+  }
+  
+  /* Style de la section d'introduction */
+  .home .introduction {
+    margin: 30px 0;
+  }
+  
+  .home .introduction h2 {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .home .introduction p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  
+  /* Style de la section des caractéristiques clés */
+  .home .features {
+    margin: 30px 0;
+  }
+  
+  .home .features h2 {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .home .features p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  
+  /* Style du CTA (Call to Action) */
+  .home .cta {
+    margin: 30px 0;
+  }
+  
+  .home .cta h2 {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .home .cta-buttons {
+    margin-top: 20px;
+  }
+  
+  .home .cta-buttons .button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .home .cta-buttons .button:hover {
+    background-color: #0056b3;
+  }
+  
+  .home .search-form {
+    margin-top: 20px;
+  }
+  
+  /* Style de la section de promotion */
+  .home .promotion {
+    margin: 30px 0;
+  }
+  
+  .home .promotion h2 {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .home .movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .home .movie-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .home .special-offers {
+    margin-top: 20px;
+  }
+  
+  .home .special-offers h3 {
+    font-size: 1.8rem;
+    color: #333;
+  }
+  
+  /* Style du footer */
+  .home footer {
+    margin-top: 30px;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .home footer .footer-links {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .home footer .footer-links li a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+  }
+  
+  .home footer .footer-links li a:hover {
+    color: #007bff;
+  }
+  
+  .home footer .social-icons {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .home footer .social-icons a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .home footer .social-icons a:hover {
+    color: #007bff;
+  }
+  

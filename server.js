@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const app = express();
 const socket = require("socket.io");
 
-// Import routes
+// Import des routes
 const userRoutes = require('./routes/userRoutes.js');
 const cinemaRoutes = require('./routes/cinemaRoutes.js');
 const movieRoutes = require('./routes/movieRoutes.js');
@@ -13,33 +13,41 @@ const eventRoutes = require('./routes/eventRoutes.js')
 
 require("dotenv").config();
 
-app.use(cors());
+// Configuration des options CORS
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,  // Autorise les cookies
+};
+
+// Utilisation de CORS avec les options spécifiées
+app.use(cors(corsOptions));
 app.use(express.json());
 
-// Use routes
+// Utilisation des routes
 app.use('/api/users', userRoutes);
 app.use('/api/cinemas', cinemaRoutes);
 app.use('/api/movies', movieRoutes);
 app.use('/api/reservations', reservationRoutes);
 app.use('/api/events', eventRoutes);
 
-
-
+// Connexion à MongoDB
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("DB Connetion Successfull");
+    console.log("Connexion à la base de données MongoDB réussie");
   })
   .catch((err) => {
-    console.log(err.message);
+    console.error("Erreur lors de la connexion à MongoDB :", err.message);
   });
 
+// Démarrage du serveur et configuration de Socket.io
 const server = app.listen(process.env.PORT, () =>
-  console.log(`Server started on ${process.env.PORT}`)
+  console.log(`Serveur démarré sur le port ${process.env.PORT}`)
 );
+
 const io = socket(server, {
   cors: {
     origin: "http://localhost:3000",
@@ -48,6 +56,7 @@ const io = socket(server, {
 });
 
 global.onlineUsers = new Map();
+
 io.on("connection", (socket) => {
   global.chatSocket = socket;
   socket.on("add-user", (userId) => {

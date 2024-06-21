@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
 const socket = require("socket.io");
+const bodyParser = require('body-parser')
 
 // Import des routes
 const userRoutes = require('./routes/userRoutes.js');
@@ -10,6 +11,8 @@ const cinemaRoutes = require('./routes/cinemaRoutes.js');
 const movieRoutes = require('./routes/movieRoutes.js');
 const reservationRoutes = require('./routes/reservationRoutes.js');
 const eventRoutes = require('./routes/eventRoutes.js')
+
+const Favorite = require("./models/favoriteModel.js")
 
 require("dotenv").config();
 
@@ -22,6 +25,9 @@ const corsOptions = {
 // Utilisation de CORS avec les options spécifiées
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 // Utilisation des routes
 app.use('/api/users', userRoutes);
@@ -70,3 +76,25 @@ io.on("connection", (socket) => {
     }
   });
 });
+
+app.get("/api/favorite" , async (req, res) => {
+  try {
+    const favorites = await Favorite.find();
+    res.status(200).send(favorites);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+})
+
+
+app.post("/api/favorite",async (req, res) => {
+  try{
+    console.log(req.body)
+    const favorite = new Favorite(req.body)
+    await favorite.save()
+    res.redirect("http://localhost:3000/");
+  }
+  catch (error) {
+      res.status(400).send(error);
+  }
+})

@@ -6,7 +6,8 @@ const movieSchema = new mongoose.Schema({
   duration: { type: Number, required: true }, // in minutes
   genre: [String], // e.g., ['Action', 'Comedy']
   releaseDate: { type: Date, required: true },
-  rating: { type: String, required: true }
+  rating: { type: String, required: true },
+  cover : {type: String, required: true}
 });
 
 const Movie = mongoose.model('Movie', movieSchema);

@@ -1,5 +1,5 @@
 // Home.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import './Home.css';
@@ -9,6 +9,10 @@ import MovieDetailsPopup from '../components/MovieDetailsPopup'; // Assurez-vous
 import PopUpDetails from '../components/PopUpDetails';
 
 const Home = () => {
+
+  const [movies, setMovies] = useState([])
+  const [moviesDisplay, setMovieDisplay] = useState(0)
+
   const latestMovies = [
     {
       id: 1,
@@ -60,6 +64,21 @@ const Home = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [showMovieDetails, setShowMovieDetails] = useState(false);
 
+  const get_movies = async () => {
+      let data = []
+      const url = "http://localhost:8000/api/movies"
+      const fetcher = await fetch(url);
+      const json = await fetcher.json()
+      for(let e = 0; e !==  json.length; e++){
+        data.push(json[e])
+        if(e >= 10){
+          break
+        }
+      }
+
+      setMovies(data)
+  }
+ 
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -93,6 +112,14 @@ const Home = () => {
     setShowMovieDetails(false);
   };
 
+  const add_movies_display = () => {
+    setMovieDisplay(moviesDisplay+1)
+  }
+
+  useEffect(() => {
+    get_movies()
+  }, [])
+
   return (
     <div className="home">
       <header>
@@ -121,14 +148,14 @@ const Home = () => {
       <section className="promotion">
         <h2>Derniers Films</h2>
         <Slider {...sliderSettings}>
-          {latestMovies.map((movie) => (
+          {movies.map((movie) => (
             <div key={movie.id} className="movie-slide" onClick={() => openMovieDetails(movie)}>
-              <img src={movie.image} alt={movie.title} />
+              <img src={movie.cover} alt={movie.title} />
               <p>{movie.title}</p>
             </div>
           ))}
         </Slider>
-        <h1></h1>
+        {console.log(movies)}
         {showMovieDetails && selectedMovie && (
         <MovieDetailsPopup movie={selectedMovie} onClose={closeMovieDetails} />
       )}

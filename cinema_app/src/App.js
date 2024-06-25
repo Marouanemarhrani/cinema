@@ -1,23 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './Components/Header';
+import SearchView from './Components/SearchView';
+import { useState } from 'react';
+import Cinemas from './Components/Cinemas';
 
 function App() {
+  const [router, setRouter] = useState("/")
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      {router == "/" ? <Cinemas/> : ""}
+      
     </div>
   );
 }
